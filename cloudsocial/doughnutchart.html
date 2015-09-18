@@ -6,6 +6,9 @@
 
 <script>
 
+
+
+
     var doughnutData = [
         {
             value: 100,
@@ -51,5 +54,18 @@
             }
         });
     });
+
+
+    $(document).ready(function(){
+
+        $.get( "http://cloudsocial.azurewebsites.net/api/followers/facebook", function( data ) {
+            $( ".result" ).html( data );
+            alert( "Load was performed." + data );
+        });
+
+
+
+
+    })
 
 </script>
