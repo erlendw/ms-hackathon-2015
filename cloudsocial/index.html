@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+
+      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,14 +42,21 @@
 
         <h1 class="page-header">CloudSocial</h1>
 
-        <canvas id="myChart" width="300" height="300"></canvas>
+
+        <div col=""><canvas id="chart-area" width="300" height="300"></canvas></div>
+
+
+
+
+
+
+
+
 
 
     </div>
-
-
-
-
+        </div>
+    </div>
   </body>
 
 
@@ -64,34 +72,54 @@
       });
   </script>
 
-  <script>
+<script>
 
-      var data = [
-          {
-              value: 300,
-              color:"#F7464A",
-              highlight: "#FF5A5E",
-              label: "Red"
-          },
-          {
-              value: 50,
-              color: "#46BFBD",
-              highlight: "#5AD3D1",
-              label: "Green"
-          },
-          {
-              value: 100,
-              color: "#FDB45C",
-              highlight: "#FFC870",
-              label: "Yellow"
-          }
-      ]
+    var doughnutData = [
+        {
+            value: 100,
+            color:"#1485CC",
+            highlight: "#FF5A5E",
+            label: "Blue"
+        },
+        {
+            value: 50,
+            color: "#CCCCCC",
+            highlight: "#0971B2",
+            label: "Green"
+        }
+    ];
 
-      var ctx = document.getElementById("myChart").getContext("2d");
+    $(document).ready(function(){
+        var ctx = $('#chart-area').get(0).getContext("2d");
 
-      var myDoughnutChart = new Chart(ctx).Doughnut(data);
+        var myDoughnut = new Chart(ctx).Doughnut(doughnutData,{
+            animation:true,
+            responsive: false,
+            showTooltips: true,
+            percentageInnerCutout : 70,
+            segmentShowStroke : true,
+            onAnimationComplete: function() {
 
+                var canvasWidthvar = $('#chart-area').width();
+                var canvasHeight = $('#chart-area').height();
+                //this constant base on canvasHeight / 2.8em
+                var constant = 114;
+                var fontsize = (canvasHeight/constant).toFixed(2);
+                ctx.font=fontsize +"em Verdana";
+                ctx.textBaseline="middle";
+                var total = 0;
+                $.each(doughnutData,function() {
+                    total += parseInt(this.value,10);
+                });
+                var tpercentage = "1337";
+                var textWidth = ctx.measureText(tpercentage).width;
 
-  </script>
+                var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
+                ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
+            }
+        });
+    });
+
+</script>
 
 </html>
