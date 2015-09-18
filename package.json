@@ -2,6 +2,8 @@
   "name": "cloudsocial",
   "dependencies": {
     "body-parser": "^1.14.0",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "request": "^2.62.0",
+    "twitter": "^1.2.5"
   }
 }

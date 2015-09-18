@@ -4,18 +4,20 @@ var bodyParser = require('body-parser')
 var app = express()
 app.use(bodyParser.json())
 
-app.get('/api/posts', function (req, res) {
-	res.json([
-		{
-			username: 'test',
-			bodt: 'test2'
-		}
-	])
-})
+
+console.log(__dirname)
+app.use(express.static(__dirname + '/assets'))
+app.get('/', function (req, res){
+	res.sendFile(__dirname + '/index.html');
+});
+
+// API/FOLLOWERS
+app.use(require('./api/followers.js'))
+
 
 var port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-	console.log('Server listening on', 3000)
+	console.log('Server listening on', port)
 })
 
