@@ -1,0 +1,118 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'msnodesql' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 warn package.json cloudsocial@ No description
+5 warn package.json cloudsocial@ No repository field.
+6 warn package.json cloudsocial@ No README data
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'msnodesql', null ]
+9 verbose cache add name=undefined spec="msnodesql" args=["msnodesql",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'msnodesql',
+10 verbose parsed url   path: 'msnodesql',
+10 verbose parsed url   href: 'msnodesql' }
+11 silly lockFile 36f1ebb8-msnodesql msnodesql
+12 verbose lock msnodesql /Users/mrtn/.npm/36f1ebb8-msnodesql.lock
+13 silly lockFile 36f1ebb8-msnodesql msnodesql
+14 silly lockFile 36f1ebb8-msnodesql msnodesql
+15 verbose addNamed [ 'msnodesql', '' ]
+16 verbose addNamed [ null, '*' ]
+17 silly lockFile 0cd57691-msnodesql msnodesql@
+18 verbose lock msnodesql@ /Users/mrtn/.npm/0cd57691-msnodesql.lock
+19 silly addNameRange { name: 'msnodesql', range: '*', hasData: false }
+20 verbose request where is /msnodesql
+21 verbose request registry https://registry.npmjs.org/
+22 verbose request id b13c706071955062
+23 verbose url raw /msnodesql
+24 verbose url resolving [ 'https://registry.npmjs.org/', './msnodesql' ]
+25 verbose url resolved https://registry.npmjs.org/msnodesql
+26 verbose request where is https://registry.npmjs.org/msnodesql
+27 info trying registry request attempt 1 at 22:23:19
+28 verbose etag "7D6GXUWBNNHFD5MORNSOA2AZG"
+29 http GET https://registry.npmjs.org/msnodesql
+30 http 304 https://registry.npmjs.org/msnodesql
+31 silly registry.get cb [ 304,
+31 silly registry.get   { date: 'Fri, 18 Sep 2015 20:23:18 GMT',
+31 silly registry.get     via: '1.1 varnish',
+31 silly registry.get     'cache-control': 'max-age=60',
+31 silly registry.get     etag: '"7D6GXUWBNNHFD5MORNSOA2AZG"',
+31 silly registry.get     age: '0',
+31 silly registry.get     connection: 'keep-alive',
+31 silly registry.get     'x-served-by': 'cache-lhr6328-LHR',
+31 silly registry.get     'x-cache': 'MISS',
+31 silly registry.get     'x-cache-hits': '0',
+31 silly registry.get     'x-timer': 'S1442607798.855340,VS0,VE366',
+31 silly registry.get     vary: 'Accept' } ]
+32 verbose etag https://registry.npmjs.org/msnodesql from cache
+33 silly addNameRange number 2 { name: 'msnodesql', range: '*', hasData: true }
+34 silly addNameRange versions [ 'msnodesql', [ '0.1.0', '0.2.0', '0.2.1' ] ]
+35 verbose addNamed [ 'msnodesql', '0.2.1' ]
+36 verbose addNamed [ '0.2.1', '0.2.1' ]
+37 silly lockFile 4e0afecd-msnodesql-0-2-1 msnodesql@0.2.1
+38 verbose lock msnodesql@0.2.1 /Users/mrtn/.npm/4e0afecd-msnodesql-0-2-1.lock
+39 silly lockFile 4e0afecd-msnodesql-0-2-1 msnodesql@0.2.1
+40 silly lockFile 4e0afecd-msnodesql-0-2-1 msnodesql@0.2.1
+41 silly lockFile 0cd57691-msnodesql msnodesql@
+42 silly lockFile 0cd57691-msnodesql msnodesql@
+43 silly resolved [ { name: 'msnodesql',
+43 silly resolved     description: 'Microsoft Driver for Node.js for SQL Server',
+43 silly resolved     author: { name: 'Microsoft Corp.' },
+43 silly resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+43 silly resolved     version: '0.2.1',
+43 silly resolved     keywords:
+43 silly resolved      [ 'sql',
+43 silly resolved        'database',
+43 silly resolved        'mssql',
+43 silly resolved        'azure',
+43 silly resolved        'sqlserver',
+43 silly resolved        'tds',
+43 silly resolved        'microsoft',
+43 silly resolved        'msnodesql',
+43 silly resolved        'node-sqlserver' ],
+43 silly resolved     homepage: 'https://github.com/WindowsAzure/node-sqlserver',
+43 silly resolved     bugs: { url: 'https://github.com/WindowsAzure/node-sqlserver/issues' },
+43 silly resolved     licenses: [ [Object] ],
+43 silly resolved     main: './lib/sql.js',
+43 silly resolved     repository:
+43 silly resolved      { type: 'git',
+43 silly resolved        url: 'git://github.com/WindowsAzure/node-sqlserver.git' },
+43 silly resolved     engines: { node: '>=0.6' },
+43 silly resolved     devDependencies: { mocha: '0.14.x', async: '0.1.x' },
+43 silly resolved     os: [ 'win32' ],
+43 silly resolved     scripts: { install: 'node scripts/install.js' },
+43 silly resolved     readme: '# Microsoft Driver for Node.js for SQL Server\r\n\r\nThe Microsoft Driver for Node.js for SQL Server allows Node.js applications on\r\nMicrosoft Windows and Microsoft Windows Azure to access Microsoft SQL Server \r\nand Microsoft Windows Azure SQL Database.\r\n\r\nThis is an initial preview release, and is not production ready. We welcome any\r\nfeedback, fixes and contributions from the community at this very early stage.\r\n\r\n## Prerequisites\r\n\r\nThe following prerequisites are necessary prior to using the driver:\r\n\r\n* Node.js - use the latest version if possible, but it has been tested on node\r\n0.6.10 and later\r\n\r\n* node-gyp - latest version installed globally (npm install -g node-gyp)\r\n\r\n* python 2.7.x - for node-gyp (make sure it is in the path)\r\n\r\n* Visual C++ 2010 - the Express edition is freely available from \r\n[Microsoft][visualstudio]\r\n\r\n* SQL Server Native Client 11.0 - available as Microsoft SQL Server 2012 \r\nNative Client found in the [SQL Server 2012 Feature Pack][sqlncli]\r\n\r\n## Build\r\n\r\nTo build the driver, first node-gyp must configure the appropriate build files.\r\n\r\n    node-gyp configure\r\n\r\nUse node-gyp to build the driver:\r\n\r\n    node-gyp build\r\n\r\nOr to build the debug version:\r\n\r\n    node-gyp build --debug\r\n\r\nThen copy the sqlserver.node file from the build\\\\(Release|Debug) directory to\r\nthe lib directory.  If you would like to use Visual C++ to debug the driver,\r\nalso copy the sqlserver.pdb file from the same directory.\r\n\r\n## Test\r\n\r\nIncluded are a few unit tests.  They require mocha, async, and assert to be \r\ninstalled via npm.  Also, set the variables in test-config.js, then run the \r\ntests as follows:\r\n\r\n    cd test\r\n    node runtests.js\r\n\r\n## Known Issues\r\n\r\nWe are aware that many features are still not implemented, and are working to\r\nupdate these. Please visit the [project on Github][project] to view \r\noutstanding [issues][issues].\r\n\r\n## Usage\r\n\r\nFor now, please see the unit tests for usage examples.\r\n\r\n## Contribute Code\r\n\r\nIf you would like to become an active contributor to this project please follow the instructions provided in [the Contribution Guidelines][contribute].\r\n\r\n## License\r\n\r\nThe Microsoft Driver for Node.js for SQL Server is licensed under the Apache\r\n2.0 license.  See the LICENSE file for more details.\r\n\r\n[visualstudio]: http://www.microsoft.com/visualstudio/\r\n\r\n[sqlncli]: http://www.microsoft.com/en-us/download/details.aspx?id=29065\r\n\r\n[project]: https://github.com/windowsazure/node-sqlserver\r\n\r\n[issues]: https://github.com/windowsazure/node-sqlserver/issues\r\n\r\n[contribute]: https://github.com/WindowsAzure/node-sqlserver/blob/master/CONTRIBUTING.md\r\n\r\n\r\n\r\n',
+43 silly resolved     _id: 'msnodesql@0.2.1',
+43 silly resolved     dist:
+43 silly resolved      { shasum: '3ce8ade4a8c016a9aa9f942810135a73c0f2c8eb',
+43 silly resolved        tarball: 'http://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz' },
+43 silly resolved     _npmVersion: '1.1.62',
+43 silly resolved     _npmUser: { name: 'jguerin', email: 'jguerin@microsoft.com' },
+43 silly resolved     maintainers: [ [Object], [Object] ],
+43 silly resolved     directories: {},
+43 silly resolved     _shasum: '3ce8ade4a8c016a9aa9f942810135a73c0f2c8eb',
+43 silly resolved     _from: 'msnodesql@',
+43 silly resolved     _resolved: 'https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz' } ]
+44 info install msnodesql@0.2.1 into /Users/mrtn/code/hackathon
+45 info installOne msnodesql@0.2.1
+46 error notsup Unsupported
+46 error notsup Not compatible with your operating system or architecture: msnodesql@0.2.1
+46 error notsup Valid OS:    win32
+46 error notsup Valid Arch:  any
+46 error notsup Actual OS:   darwin
+46 error notsup Actual Arch: x64
+47 error System Darwin 14.1.0
+48 error command "node" "/usr/local/bin/npm" "install" "msnodesql"
+49 error cwd /Users/mrtn/code/hackathon
+50 error node -v v0.10.32
+51 error npm -v 1.4.28
+52 error code EBADPLATFORM
+53 verbose exit [ 1, true ]
