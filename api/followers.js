@@ -14,7 +14,7 @@ var params = {screen_name: 'Mrtn9'}
 var facebook_id = 56381779049
 
 router.get('/api/followers/:media', function (req, res) {
-	
+	res.type('text/plain')
 	if(req.params.media == 'twitter'){
 		client.get('followers/ids', params, function(error, result, response){
 			if(!error){
