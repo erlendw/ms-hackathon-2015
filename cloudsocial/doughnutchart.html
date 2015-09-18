@@ -6,12 +6,28 @@
 
 <script>
 
+    var count1;
+
+
+    $(document).ready(function(){
+
+        $.get( "http://cloudsocial.azurewebsites.net/api/followers/facebook", function( data ) {
+            $( ".result" ).html( data );
+            count1 = data;
+        });
+
+
+
+
+    })
+
+
 
 
 
     var doughnutData = [
         {
-            value: 100,
+            value: data,
             color:"#1485CC",
             highlight: "#FF5A5E",
             label: "Blue"
@@ -54,18 +70,5 @@
             }
         });
     });
-
-
-    $(document).ready(function(){
-
-        $.get( "http://cloudsocial.azurewebsites.net/api/followers/facebook", function( data ) {
-            $( ".result" ).html( data );
-            alert( "Load was performed." + data );
-        });
-
-
-
-
-    })
 
 </script>
