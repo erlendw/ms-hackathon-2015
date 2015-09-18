@@ -6,7 +6,7 @@ app.use(bodyParser.json())
 
 
 console.log(__dirname)
-app.use(express.static(__dirname + '/assets'))
+app.use(express.static(__dirname + '/cloudsocial/'))
 app.get('/', function (req, res){
 	res.sendFile(__dirname + '/index.html');
 });
