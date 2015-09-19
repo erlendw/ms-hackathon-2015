@@ -9,11 +9,11 @@
         <hr>
 
 
-        <div class="">
+        <div class=" center-block">
 
-                <button class="btn twitter"><i class="fa fa-twitter-square">Twitter</i></button>
+                <button class="btn btn-sm twitter"><i class="fa fa-twitter-square">Twitter</i></button>
 
-                <button class="btn facebook"><i class="fa fa-facebook-square">Facebook</i></button>
+                <button class="btn btn-sm facebook "><i class="fa fa-facebook-square">Facebook</i></button>
         </div>
 
 
@@ -76,7 +76,8 @@
                    var textWidth = ctx.measureText(tpercentage).width;
 
                    var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
-                   ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
+                   ctx.fillText("total: ", txtPosx, (canvasHeight/2)-9);
+                   ctx.fillText(tpercentage, txtPosx, (canvasHeight/2)+9);
                }
            });
 
