@@ -4,8 +4,8 @@
     <div class="panel-heading">
         <h3 class="panel-title">Panel title</h3>
     </div>
-    <div class="panel-body">
-        <canvas id="chart-area" width="300" height="300"></canvas>
+    <div class="panel-body col-md-offset-1">
+        <canvas id="chart-area" width="auto" height="auto"></canvas>
     </div>
 </div>
 
@@ -18,29 +18,31 @@
 
 <script>
 
-    var count1;
+    var count1 = 1;
 
 
-    $(document).ready(function(){
+   $(document).ready(function(){
 
 
-        $.get("http://cloudsocial.azurewebsites.net/api/followers/facebook")
+       $.ajax({
+           type: "GET",
+           url: "http://cloudsocial.azurewebsites.net/api/followers/facebook",
+           dataType: "jsonp",
+           success: function(data){
+
+               drawChart(data,50, data+50);
 
 
-                .success(function(result) {
+
+           },
 
 
-                    $( ".result" ).html( result );
-                    count1 = result;
+           error: function (xhr, ajaxOptions, thrownError) {
 
-                })
+               drawChart(50,50, 100);
 
-
-                .error(function(jqXHR, textStatus, errorThrown) {
-
-                    count1 = 500;
-
-                });
+           }
+       })
 
 
     });
@@ -49,50 +51,57 @@
 
 
 
-    var doughnutData = [
-        {
-            value: count1,
-            color:"#1485CC",
-            highlight: "#FF5A5E",
-            label: "Blue"
-        },
-        {
-            value: 50,
-            color: "#CCCCCC",
-            highlight: "#0971B2",
-            label: "Green"
-        }
-    ];
+    function drawChart(tall1,tall2, total){
 
-    $(document).ready(function(){
-        var ctx = $('#chart-area').get(0).getContext("2d");
-
-        var myDoughnut = new Chart(ctx).Doughnut(doughnutData,{
-            animation:true,
-            responsive: false,
-            showTooltips: false,
-            percentageInnerCutout : 70,
-            segmentShowStroke : true,
-            onAnimationComplete: function() {
-
-                var canvasWidthvar = $('#chart-area').width();
-                var canvasHeight = $('#chart-area').height();
-                //this constant base on canvasHeight / 2.8em
-                var constant = 114;
-                var fontsize = (canvasHeight/constant).toFixed(2);
-                ctx.font=fontsize +"em Verdana";
-                ctx.textBaseline="middle";
-                var total = 0;
-                $.each(doughnutData,function() {
-                    total += parseInt(this.value,10);
-                });
-                var tpercentage = "1337";
-                var textWidth = ctx.measureText(tpercentage).width;
-
-                var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
-                ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
+        var doughnutData = [
+            {
+                value: tall1,
+                color:"#1485CC",
+                highlight: "#FF5A5E",
+                label: "Blue"
+            },
+            {
+                value: tall2,
+                color: "#CCCCCC",
+                highlight: "#0971B2",
+                label: "Green"
             }
+        ];
+
+        $(document).ready(function(){
+            var ctx = $('#chart-area').get(0).getContext("2d");
+
+            var myDoughnut = new Chart(ctx).Doughnut(doughnutData,{
+                animation:true,
+                responsive: false,
+                showTooltips: false,
+                percentageInnerCutout : 70,
+                segmentShowStroke : true,
+                onAnimationComplete: function() {
+
+                    var canvasWidthvar = $('#chart-area').width();
+                    var canvasHeight = $('#chart-area').height();
+                    //this constant base on canvasHeight / 2.8em
+                    var constant = 114;
+                    var fontsize = (canvasHeight/constant).toFixed(2);
+                    ctx.font=fontsize +"em Verdana";
+                    ctx.textBaseline="middle";
+                    var total = 0;
+                    $.each(doughnutData,function() {
+                        total += parseInt(this.value,10);
+                    });
+                    var tpercentage = total;
+                    var textWidth = ctx.measureText(tpercentage).width;
+
+                    var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
+                    ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
+                }
+            });
         });
-    });
+
+    }
+
+
+
 
 </script>
