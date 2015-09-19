@@ -1,17 +1,57 @@
 
 
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+        <canvas id="chart-area" width="300" height="300"></canvas>
+    </div>
+</div>
 
-<canvas id="chart-area" width="300" height="300"></canvas>
+
+
+
+
+
 
 
 <script>
+
+    var count1;
+
+
+    $(document).ready(function(){
+
+
+        $.get("http://cloudsocial.azurewebsites.net/api/followers/facebook")
+
+
+                .success(function(result) {
+
+
+                    $( ".result" ).html( result );
+                    count1 = result;
+
+                })
+
+
+                .error(function(jqXHR, textStatus, errorThrown) {
+
+                    count1 = 500;
+
+                });
+
+
+    });
+
 
 
 
 
     var doughnutData = [
         {
-            value: 100,
+            value: count1,
             color:"#1485CC",
             highlight: "#FF5A5E",
             label: "Blue"
@@ -54,18 +94,5 @@
             }
         });
     });
-
-
-    $(document).ready(function(){
-
-        $.get( "http://cloudsocial.azurewebsites.net/api/followers/facebook", function( data ) {
-            $( ".result" ).html( data );
-            alert( "Load was performed." + data );
-        });
-
-
-
-
-    })
 
 </script>
