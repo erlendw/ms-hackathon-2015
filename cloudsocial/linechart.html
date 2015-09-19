@@ -1,4 +1,21 @@
-<canvas id="line-chart" width="500" height="300"></canvas>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Twitter responses per hour</h3>
+    </div>
+    <div class="panel-body">
+
+
+        <canvas id="line-chart" height="auto" width="auto"></canvas>
+
+
+
+
+
+    </div>
+</div>
 
 <script>
 
@@ -34,13 +51,12 @@
                     labels: ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
                     datasets: [
                         {
-                            label: "Total",
-                            fillColor: "rgba(251,151,151,0.2)",
-                            strokeColor: "rgba(251,151,151,1)",
-                            pointColor: "rgba(251,151,151,1)",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(251,151,151,1)",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
                             data: data
                         }
                     ]
@@ -92,6 +108,8 @@
 
                     //String - A legend template
                     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"color:<%=datasets[i].strokeColor%>\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+
+                    , responsive : true
 
                 });
 

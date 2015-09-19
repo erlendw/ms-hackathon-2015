@@ -7,6 +7,9 @@ function parseTweetsJson(callback){
 
 
 
+
+
+
     $.getJSON( "twitterdata.json", function( data ) {
         twitterdata = (data);
 
