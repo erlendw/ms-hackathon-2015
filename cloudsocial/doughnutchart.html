@@ -34,14 +34,12 @@
 
    $(document).ready(function(){
 
-
        $.ajax({
            type: "GET",
            url: "http://cloudsocial.azurewebsites.net/api/followers/facebook",
            dataType: "jsonp",
            success: function(data){
-
-               drawChart(data,50, data+50);
+               drawDoughtnutChart(data,50, data+50);
 
 
 
@@ -49,12 +47,10 @@
 
 
            error: function (xhr, ajaxOptions, thrownError) {
-
-               drawChart(50,50, 100);
+               drawDoughtnutChart(50,50, 100);
 
            }
-       })
-
+       });
 
     });
 
@@ -62,7 +58,7 @@
 
 
 
-    function drawChart(tall1,tall2, total){
+    function drawDoughtnutChart(tall1,tall2, sum){
 
         var doughnutData = [
             {
@@ -79,35 +75,33 @@
             }
         ];
 
-        $(document).ready(function(){
-            var ctx = $('#chart-area').get(0).getContext("2d");
+        var ctx = $('#chart-area').get(0).getContext("2d");
 
-            var myDoughnut = new Chart(ctx).Doughnut(doughnutData,{
-                animation:true,
-                responsive: false,
-                showTooltips: false,
-                percentageInnerCutout : 70,
-                segmentShowStroke : true,
-                onAnimationComplete: function() {
+        var myDoughnut = new Chart(ctx).Doughnut(doughnutData,{
+            animation:true,
+            responsive: false,
+            showTooltips: false,
+            percentageInnerCutout : 70,
+            segmentShowStroke : true,
+            onAnimationComplete: function() {
 
-                    var canvasWidthvar = $('#chart-area').width();
-                    var canvasHeight = $('#chart-area').height();
-                    //this constant base on canvasHeight / 2.8em
-                    var constant = 114;
-                    var fontsize = (canvasHeight/constant).toFixed(2);
-                    ctx.font=fontsize +"em Verdana";
-                    ctx.textBaseline="middle";
-                    var total = 0;
-                    $.each(doughnutData,function() {
-                        total += parseInt(this.value,10);
-                    });
-                    var tpercentage = total;
-                    var textWidth = ctx.measureText(tpercentage).width;
+                var canvasWidthvar = $('#chart-area').width();
+                var canvasHeight = $('#chart-area').height();
+                //this constant base on canvasHeight / 2.8em
+                var constant = 114;
+                var fontsize = (canvasHeight/constant).toFixed(2);
+                ctx.font=fontsize +"em Verdana";
+                ctx.textBaseline="middle";
+                var total = 0;
+                $.each(doughnutData,function() {
+                    total += parseInt(this.value,10);
+                });
+                var tpercentage = sum;
+                var textWidth = ctx.measureText(tpercentage).width;
 
-                    var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
-                    ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
-                }
-            });
+                var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
+                ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
+            }
         });
 
     }
