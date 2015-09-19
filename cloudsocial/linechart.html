@@ -2,11 +2,7 @@
 
 <script>
 
-    var count1 = 1;
-
-
     $(document).ready(function(){
-
 
         $.ajax({
             type: "GET",
@@ -14,50 +10,26 @@
             dataType: "jsonp",
             success: function(data){
 
-                drawChart(data,50, data+50);
-
-
+                drawLineChart(data,50, data+50);
 
             },
 
-
             error: function (xhr, ajaxOptions, thrownError) {
 
-                drawChart(50,50, 100);
-
+                drawLineChart(50,50, 100);
             }
         })
 
 
     });
 
-    function drawChart(tall1, tall2, total){
+    function drawLineChart(tall1, tall2, total){
         $(document).ready(function(){
             var ctx = $('#line-chart').get(0).getContext("2d");
 
             var lineData = {
                 labels: ["January", "February", "March", "April", "May", "June", "July"],
                 datasets: [
-                    {
-                        label: "Facebook",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
-                        data: [tall1, tall1+10, tall1+20, tall1+30, tall1+40, tall1+50, tall1+100]
-                    },
-                    {
-                        label: "Twitter",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,205,151,1)",
-                        pointColor: "rgba(151,205,151,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,205,151,1)",
-                        data: [tall2, tall2+25, tall2+35, tall2+45, tall2+55, tall2+65, tall2+120]
-                    },
                     {
                         label: "Total",
                         fillColor: "rgba(251,151,151,0.2)",
@@ -67,6 +39,26 @@
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(251,151,151,1)",
                         data: [total, total+10, total+20, total+30, total+40, total+50, total+100]
+                    },
+                    {
+                        label: "Twitter",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,205,151,1)",
+                        pointColor: "rgba(151,205,151,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,205,151,1)",
+                        data: [tall2+15, tall2+25, tall2+35, tall2+45, tall2+55, tall2+65, tall2+120]
+                    },
+                    {
+                        label: "Facebook",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [tall1, tall1+10, tall1+20, tall1+30, tall1+40, tall1+50, tall1+100]
                     }
                 ]
             };
@@ -119,6 +111,9 @@
                 legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
             });
+
+            var legend = lineChart.generateLegend();
+            $('#linechart-legend').append(legend);
         });
     }
 </script>
