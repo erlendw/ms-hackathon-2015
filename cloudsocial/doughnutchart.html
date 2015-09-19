@@ -2,10 +2,21 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
+        <h3 class="panel-title">Facebook vs Twitter followers</h3>
     </div>
     <div class="panel-body">
-        <canvas id="chart-area" width="300" height="300"></canvas>
+        <canvas id="chart-area" width="auto" height="auto"></canvas>
+        <hr>
+
+
+        <div class="center-block">
+
+                <button class="btn twitter"><i class="fa fa-twitter-square">Twitter</i></button>
+
+                <button class="btn facebook"><i class="fa fa-facebook">Facebook</i></button>
+        </div>
+
+
     </div>
 </div>
 
@@ -18,30 +29,28 @@
 
 <script>
 
-    var count1;
+    var count1 = 1;
 
 
-    $(document).ready(function(){
+   $(document).ready(function(){
+
+       $.ajax({
+           type: "GET",
+           url: "http://cloudsocial.azurewebsites.net/api/followers/facebook",
+           dataType: "jsonp",
+           success: function(data){
+               drawDoughtnutChart(data,50, data+50);
 
 
-        $.get("http://cloudsocial.azurewebsites.net/api/followers/facebook")
+
+           },
 
 
-                .success(function(result) {
+           error: function (xhr, ajaxOptions, thrownError) {
+               drawDoughtnutChart(50,50, 100);
 
-
-                    $( ".result" ).html( result );
-                    count1 = result;
-
-                })
-
-
-                .error(function(jqXHR, textStatus, errorThrown) {
-
-                    count1 = 500;
-
-                });
-
+           }
+       });
 
     });
 
@@ -49,22 +58,23 @@
 
 
 
-    var doughnutData = [
-        {
-            value: count1,
-            color:"#1485CC",
-            highlight: "#FF5A5E",
-            label: "Blue"
-        },
-        {
-            value: 50,
-            color: "#CCCCCC",
-            highlight: "#0971B2",
-            label: "Green"
-        }
-    ];
+    function drawDoughtnutChart(tall1,tall2, sum){
 
-    $(document).ready(function(){
+        var doughnutData = [
+            {
+                value: tall1,
+                color:"#1485CC",
+                highlight: "#FF5A5E",
+                label: "Blue"
+            },
+            {
+                value: tall2,
+                color: "#4099FF",
+                highlight: "#0971B2",
+                label: "Green"
+            }
+        ];
+
         var ctx = $('#chart-area').get(0).getContext("2d");
 
         var myDoughnut = new Chart(ctx).Doughnut(doughnutData,{
@@ -86,13 +96,17 @@
                 $.each(doughnutData,function() {
                     total += parseInt(this.value,10);
                 });
-                var tpercentage = "1337";
+                var tpercentage = sum;
                 var textWidth = ctx.measureText(tpercentage).width;
 
                 var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
                 ctx.fillText(tpercentage, txtPosx, canvasHeight/2);
             }
         });
-    });
+
+    }
+
+
+
 
 </script>
