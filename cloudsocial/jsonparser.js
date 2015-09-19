@@ -1,17 +1,13 @@
 /**
  * Created by erlendwestbye on 19/09/15.
  */
-
-
-function getMyJson(){
-
+function parseTweetsJson(callback){
 
     var twitterdata;
 
 
 
     $.getJSON( "twitterdata.json", function( data ) {
-
         twitterdata = (data);
 
 
@@ -55,21 +51,14 @@ function getMyJson(){
 
             else{
 
-                normdata[count] = (timeOfDay[count] / numberOfTweets[count]).toFixed(2)
+                normdata[count] = parseFloat((timeOfDay[count] / numberOfTweets[count]).toFixed(2))
 
             }
 
 
         }
 
-
-
-        return (normdata);
-
+        callback(normdata)
     });
-
-
-
-
 
 }
