@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/cloudsocial/'))
 // API/FOLLOWERS
 app.use(require('./api/followers.js'))
 app.use(require('./api/tweets.js'))
+app.use(require('./api/tweet.js'))
 
 var port = process.env.PORT || 3000;
 
