@@ -65,3 +65,23 @@ function parseTweetsJson(callback){
     });
 
 }
+
+
+function parseLove(callback){
+
+
+    //$.getJSON("http://cloudsocial.azurewebsites.net/api/followers/", function( data ) {
+    $.getJSON("twitterlol.json", function( data ) {
+
+        var twitter = data.twitter;
+
+        var facebook = data.facebook;
+
+        callback(twitter,facebook)
+
+    });
+
+}
+
+
+

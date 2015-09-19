@@ -19,28 +19,6 @@
 
 <script>
 
-    $(document).ready(function(){
-
-        $.ajax({
-            type: "GET",
-            url: "http://cloudsocial.azurewebsites.net/api/followers/facebook",
-            dataType: "jsonp",
-            success: function(data){
-
-                drawLineChart(data,50, data+50);
-
-            },
-
-            error: function (xhr, ajaxOptions, thrownError) {
-
-                drawLineChart(50,50, 100);
-            }
-        })
-
-
-    });
-
-    function drawLineChart(){
         $(document).ready(function(){
             parseTweetsJson(function(data){
 
@@ -116,6 +94,5 @@
                 var legend = lineChart.generateLegend();
                 $('#linechart').append(legend);
             });
-        });
-    }
+    });
 </script>
