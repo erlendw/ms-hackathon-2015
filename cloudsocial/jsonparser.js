@@ -83,17 +83,22 @@ function parseLove(callback){
 
 }
 
-function parseTwitter(){
+function parseTwitter(callback){
 
 
     //$.getJSON("http://cloudsocial.azurewebsites.net/api/followers/", function( data ) {
     $.getJSON("mvptweet.json", function( data ) {
 
-        alert(data.created_at)
+        var date = data.created_at;
+
+        var tweet = data.text;
+
+        callback(date,tweet)
 
     });
 
 }
+
 
 
 

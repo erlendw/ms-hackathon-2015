@@ -7,6 +7,37 @@
 
     <div class="panel-body">
 
+
+        <div id="tweettext"></div>
+
+        <div class="text-muted" id="tweetdate"></div>
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">This tweet - you da second real mvp</h3>
+    </div>
+
+
+    <div class="panel-body">
+
+
+        <div>Bli oppdatert på de viktigste nyhetene og smarte funksjoner i Office 2016 som lanseres til uken. Webinar 25.9: </div>
+
+
+        <div class="text-muted">Mon Jul 13 13:26:33 +0000 2015</div>
+
+
     </div>
 
 
@@ -14,6 +45,16 @@
 
 <script>
 
-    pa
+    $(document).ready(function(){
+        parseTwitter(function(date, text){
+
+            $("#tweetdate").html(date);
+            $("#tweettext").html(text);
+
+
+        })
+    });
+
+
 
 </script>
