@@ -8,11 +8,63 @@ function getMyJson(){
 
     var twitterdata;
 
+
+
     $.getJSON( "twitterdata.json", function( data ) {
 
         twitterdata = (data);
 
-        alert(twitterdata[0].created_at)
+
+
+
+
+        var timeOfDay = [];
+        var numberOfTweets = [];
+
+        for (i = 0; i < 24; i++) {
+
+            timeOfDay[i] = 0;
+            numberOfTweets[i] = 0;
+
+        }
+
+
+        for(var count in twitterdata){
+
+
+            var favourites = twitterdata[count].favorite_count;
+            var retweets = twitterdata[count].retweet_count;
+
+
+            timeOfDay[parseInt(twitterdata[count].created_at.split(" ")[3].split(":")[0])] += parseInt(favourites)+parseInt(retweets);
+
+            numberOfTweets[parseInt(twitterdata[count].created_at.split(" ")[3].split(":")[0])] += 1;
+
+            console.log(parseInt(twitterdata[count].created_at.split(" ")[3].split(":")[0]) + " " + favourites + ":" +retweets);
+        }
+
+        var normdata = [];
+
+        for(var count in timeOfDay){
+
+            if(numberOfTweets[count] == 0){
+
+                normdata[count] = 0;
+
+            }
+
+            else{
+
+                normdata[count] = (timeOfDay[count] / numberOfTweets[count]).toFixed(2)
+
+            }
+
+
+        }
+
+
+
+        return (normdata);
 
     });
 
