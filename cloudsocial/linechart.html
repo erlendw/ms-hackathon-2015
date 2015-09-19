@@ -28,7 +28,7 @@
             var ctx = $('#line-chart').get(0).getContext("2d");
 
             var lineData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ["00:00", "04:00", "08:00", "12:00", "16:00", "20:00", "24:00"],
                 datasets: [
                     {
                         label: "Total",
@@ -113,7 +113,7 @@
             });
 
             var legend = lineChart.generateLegend();
-            $('#linechart-legend').append(legend);
+            $('#linechart').append(legend);
         });
     }
 </script>
